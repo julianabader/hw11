@@ -7,4 +7,4 @@ var    Arch = new Schema({
     adress:String
 }
 );
-module.exports=Arch;
+

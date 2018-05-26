@@ -4,7 +4,7 @@ var data = require("./data/arch.json"),
     Schema =require("./modelExports");
 
 
-    var result,arr,flag;
+    var result,bol,arr;
 
 
     mongoose.connect(mongoose.connect('mongodb://julianab:nouray+1994@ds225840.mlab.com:25840/db_ringapp2018'));
@@ -28,21 +28,21 @@ var data = require("./data/arch.json"),
                     arr= archives[0].Archives;
                     if(id-1<=arr.length-1){
                         result = arr[id-1];
-                        flag = true;
+                        bol = true;
                     }
                     else{
-                        flag = false;
+                        bol = false;
                     }
                 err=>{
                     console.log(`connection error:${err}`);
                     }
                 }   
            ); 
-                if(flag){
-                    flag = false;
+                if(bol){
+                    bol = false;
                     return ({"name":result.name});
                 }
-                if(!flag){
+                if(!bol){
                     return ({"Error":"Not Found"});
                 }
 
@@ -54,24 +54,24 @@ var data = require("./data/arch.json"),
                     arr= archives[0].archives;
                     if(arr[id-1].name==name&&id-1<=arr.length){
                             result = arr[id-1];
-                            flag = true;   
+                            bol = true;   
                     }
                      else{
-                         flag = false;
+                         bol = false;
                     }
                  err=>{
                      console.log(`connection error:${err}`);
                     }
                  }   
             ); 
-            if(flag){
-                flag = false;
+            if(bol){
+                bol = false;
                 return({"name": result.name,
                         "age":result.age,
                         "address":result.address
                     });
             }
-            if(!flag){
+            if(!bol){
                 return ({"Error":"Not Found"});
             }
         }
